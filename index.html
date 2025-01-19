@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laxmi Prasad Dhakal - Digital Innovator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/roboto/4.5.4/roboto.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lora/4.5.4/lora.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-teal: #0d9488;
+            --primary-lavender: #e0e7ff;
+            --primary-gold: #fbbf24;
+            --primary-green: #22c55e;
+            --text-dark: #1e293b;
+            --text-light: #f8fafc;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -500% 0; }
+            100% { background-position: 500% 0; }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(37, 99, 235, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(37, 99, 235, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(37, 99, 235, 0.5); }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #0ea5e9, #6366f1, #8b5cf6, #0ea5e9);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.8), rgba(13, 148, 136, 0.8));
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            color: var(--text-light);
+            animation: float 6s ease-in-out infinite;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            font-family: 'Lora', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(90deg, #f8fafc, #e2e8f0, #f8fafc);
+            background-size: 200% auto;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+            animation: float 6s ease-in-out infinite;
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary-gold);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: var(--primary-teal);
+            color: var(--text-light);
+        }
+
+        .section {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 0 1rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .project-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .project-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: var(--text-dark);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-lavender);
+            transition: all 0.3s ease;
+            position: relative;
+            animation: pulse 3s infinite;
+            overflow: hidden;
+        }
+
+        .skill-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-circle:hover img {
+            transform: scale(1.1);
+        }
+
+        .skill-item p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+            color: var(--text-light);
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+        }
+
+        .contact-info a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--text-dark);
+            color: var(--text-light);
+            position: relative;
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        .upshift-note {
+            text-align: center;
+            color: var(--text-light);
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;}
+
+            .hero-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .skill-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .contact-info {
+                padding: 1.5rem;
+            }
+
+            .contact-info h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #0ea5e9, #6366f1, #8b5cf6, #0ea5e9);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid var(--text-light);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--primary-gold);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-teal);
+        }
+
+        .jiggle {
+            font-weight: bold;
+            display: inline-block;
+            animation: jiggle 3.4s infinite;
+        }
+
+        @keyframes jiggle {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            50% { transform: translateX(2px); }
+            75% { transform: translateX(-1px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress"></div>
+    <div class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <button class="hamburger" aria-label="Toggle Menu">☰</button>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="typewriter">Laxmi Prasad Dhakal</h1>
+            <p>Social Innovator & Technology Pioneer</p>
+            <a href="#projects" class="cta-button">Discover My Innovations</a>
+            <img src="Me.jpg" alt="Laxmi Prasad Dhakal" class="hero-image">
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2>About Me</h2>
+       <p>
+    As a <span class="jiggle" style="font-size: 1.1em;">proud Upshifter</span>, a passionate <span class="jiggle" style="font-size: 1.1em;">visionary</span> and a committed technology innovator from <span class="jiggle" style="font-size: 1.1em;">Bhutan</span>, I am dedicated to using technology to improve lives through thoughtful digital solutions. My focus is on creating <span class="jiggle" style="font-size: 1.1em;">transformative</span> innovations that thoughtfully bridge <span class="jiggle" style="font-size: 1.1em;">timeless wisdom</span> with the evolving demands of modern life. With a particular focus on <span class="jiggle" style="font-size: 1.1em;">elderly care</span>, <span class="jiggle" style="font-size: 1.1em;">education</span>, and <span class="jiggle" style="font-size: 1.1em;">spiritual well-being</span>, I am committed to developing solutions that respect and honor <span class="jiggle" style="font-size: 1.1em;">cultural values</span> while addressing the needs of today’s world.
+</p>
+    </section>
+
+    <section class="section" id="projects">
+        <h2>Featured Innovations</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>CareBot</h3>
+                <p>A revolutionary AI-powered companion designed for elderly care and support.</p>
+                <a href="https://www.linkedin.com/posts/laxmi-prasad-dhakal-51b35a307_carebot-innovation-technology-activity-7279195180824510464-LG7D?utm_source=share&utm_medium=member_android" target="_blank" class="cta-button">Explore on LinkedIn</a>
+            </div>
+            <div class="project-card">
+                <h3>Spiritual Wisdom Companion</h3>
+                <p>AI-powered chatbot sharing spiritual insights and wisdom.</p>
+                <a href="https://laxmi-wbf07.github.io/Zangpo/happiness.html" target="_blank" class="cta-button">Experience</a>
+            </div>
+            <div class="project-card">
+                <h3>Waste Management Portal</h3>
+                <p>Digital solution for efficient waste management and sustainability.</p>
+                <a href="https://laxmi-wbf07.github.io/Waste/waste.html" target="_blank" class="cta-button">Visit Portal</a>
+            </div>
+            <div class="project-card">
+                <h3>Slide-Show Based Tutorial App</h3>
+                <p>Simplified learning platform for senior citizens.</p>
+                <a href="https://laxmi1st.github.io/mbob-payment-guide/" target="_blank" class="cta-button">Try It</a>
+            </div>
+            <div class="project-card">
+                <h3>AI Trekking Guide (Beta)</h3>
+                <p>Intelligent companion for exploring Bhutan's natural beauty.</p>
+                <a href="https://laxmi-wbf07.github.io/Trek/trek.html" target="_blank" class="cta-button">Explore</a>
+            </div>
+            <div class="project-card">
+                <h3>Distraction-Free Learning</h3>
+                <p>Creating focused educational environments for better learning outcomes.</p>
+                <a href="https://laxmi-wbf07.github.io/cool/" target="_blank" class="cta-button">View Project</a>
+            </div>
+        </div>
+        <div class="upshift-note">
+           <p>These <span class="jiggle">projects</span> were made possible through the application of <span class="jiggle" style="font-size: 1.1em;">Upshift</span> problem-solving skills.</p></div>
+    </section>
+
+    <section class="section" id="skills">
+        <h2>My Skill-Set</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-circle">
+                    <img src="Web.jpeg" alt="AI/ML">
+                </div>
+                <p>Python Micro System Development</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-circle">
+                    <img src="FullStack.png" alt="Web Development">
+                </div>
+                <p>Web Development</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-circle">
+                    <img src="IOT.jpeg" alt="Mobile Development">
+                </div>
+                <p>Internet Of Things</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Connect & Collaborate</h2>
+                <a href="https://www.linkedin.com/in/laxmi-prasad-dhakal-51b35a307" target="_blank">Professional Network: LinkedIn</a>
+                <a href="mailto:laxmiprasaddhakalwbf@gmail.com">Email: laxmiprasaddhakal<br>wbf@gmail.com</a>
+                <a href="tel:+97517564730">Direct Line: +975 17564730</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Innovating for a Better Bhutan 🇧🇹</p>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            document.querySelector('.loading-spinner').classList.add('hidden');
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                hamburger.textContent = navLinks.classList.contains('active') ? '×' : '☰';
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburger.textContent = '☰';
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.navbar-content') && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.textContent = '☰';
+                }
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        function createParticle(e) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            document.body.appendChild(particle);
+
+            const size = Math.random() * 8 + 4;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            const destinationX = e.clientX + (Math.random() - 0.5) * 200;
+            const destinationY = e.clientY + (Math.random() - 0.5) * 200;
+
+            const animation = particle.animate([
+                {
+                    transform: `translate(${e.clientX}px, ${e.clientY}px)`,
+                    opacity: 1
+                },
+                {
+                    transform: `translate(${destinationX}px, ${destinationY}px)`,
+                    opacity: 0
+                }
+            ], {
+                duration: 1000,
+                easing: 'cubic-bezier(0, .9, .57, 1)',
+                delay: Math.random() * 200
+            });
+
+            animation.onfinish = () => {
+                particle.remove();
+            };
+        }
+
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 8; i++) {
+                createParticle(e);
+            }
+        });
+
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            element.innerHTML = '';
+            type();
+        }
+
+        const heroTitle = document.querySelector('.typewriter');
+        typeWriter(heroTitle, 'Laxmi Prasad Dhakal');
+
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.pageX * -1/15);
+            const moveY = (e.pageY * -1/15);
+            document.querySelector('.hero-content').style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollPx = document.documentElement.scrollTop;
+            const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = `${(scrollPx / winHeightPx) * 100}%`;
+            scrollProgress.style.width = scrolled;
+        });
+    </script>
+</body>
+</html>
